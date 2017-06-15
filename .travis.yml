@@ -30,6 +30,5 @@ before_script:
 script:
   - cmake --build . --config Release
   - ctest
-  - chmod +x scripts/conan.sh
-  - ./scripts/conan.sh
+  - ../scripts/conan.sh
   
