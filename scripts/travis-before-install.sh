@@ -13,4 +13,7 @@ else
   sudo add-apt-repository --yes ppa:kalakris/cmake
   sudo apt-get update -qq
   sudo apt-get install cmake
+  sudo add-apt-repository ppa:fkrull/deadsnakes-python2.7
+  sudo apt-get update
+  sudo apt-get install python2.7
 fi
