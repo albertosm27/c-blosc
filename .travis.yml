@@ -1,5 +1,5 @@
 language: c
-
+sudo: required
 env:
    global:
      - CONAN_REFERENCE: "lib/1.0"
@@ -30,7 +30,6 @@ before_script:
 script:
   - cmake --build . --config Release
   - ctest
-  - chmod +x .travis/install.sh
   - if [[ "$(uname -s)" == 'Darwin' ]]; then
   -    brew update || brew update
   -    brew outdated pyenv || brew upgrade pyenv
