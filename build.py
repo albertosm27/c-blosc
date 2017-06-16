@@ -11,5 +11,5 @@ def system(command):
 
 
 if __name__ == "__main__":
-    builder = ConanMultiPackager(username="albertosm27")
+    builder = ConanMultiPackager(curpage=1, total_pages=2)
     builder.run()
