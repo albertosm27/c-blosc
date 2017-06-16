@@ -4,21 +4,14 @@ import os
 
 class CbloscConan(ConanFile):
     name = "c-blosc"
-    version = "0.1"
+    description = "An extremely fast, multi-threaded, meta-compressor library"
+    version = "0.2"
     license = "BSD"
     url = "https://api.bintray.com/conan/albertosm27/c-blosc-test"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
     generators = "cmake"
-
-    def source(self):
-        # This small hack might be useful to guarantee proper /MT /MD linkage in MSVC
-        # if the packaged project doesn't have variables to set it properly
-        tools.replace_in_file(
-            "CMakeLists.txt",
-            "PROJECT(MyBlosc)", '''PROJECT(MyBlosc) 
-             include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake) conan_basic_setup()''')
 
     def build(self):
         cmake = CMake(self)

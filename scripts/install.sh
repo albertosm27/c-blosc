@@ -12,23 +12,14 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
     if which pyenv > /dev/null; then
         eval "$(pyenv init -)"
     fi
+
     pyenv install 2.7.10
     pyenv virtualenv 2.7.10 conan
     pyenv rehash
     pyenv activate conan
 fi
 
-pip install urllib3[secure]
 pip install conan --upgrade
 pip install conan_package_tools
 
 conan user
-
-if [[ "$(uname -s)" == 'Darwin' ]]; then
-    if which pyenv > /dev/null; then
-        eval "$(pyenv init -)"
-    fi
-    pyenv activate conan
-fi
-
-python build.py
