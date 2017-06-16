@@ -15,6 +15,7 @@ class CbloscConan(ConanFile):
 
     def source(self):
         # patch to ensure compatibility
+        self.run("pwd")
         tools.replace_in_file("albertosm27/c-blosc/CMakeLists.txt", "PROJECT(blosc)", '''PROJECT(blosc)
             include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
             conan_basic_setup()''')
