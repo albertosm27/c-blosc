@@ -15,21 +15,20 @@ class CbloscConan(ConanFile):
 
     def source(self):
         # patch to ensure compatibility
-        self.run("pwd")
-        tools.replace_in_file("albertosm27/c-blosc/CMakeLists.txt", "PROJECT(blosc)", '''PROJECT(blosc)
+        tools.replace_in_file("/home/travis/build/albertosm27/c-blosc/CMakeLists.txt", "PROJECT(blosc)", '''PROJECT(blosc)
             include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
             conan_basic_setup()''')
 
     def build(self):
         cmake = CMake(self)
         shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
-        self.run('cmake albertosm27/c-blosc/ -DBUILD_TESTS=OFF %s %s' %
+        self.run('cmake /home/travis/build/albertosm27/c-blosc/ -DBUILD_TESTS=OFF %s %s' %
                  (cmake.command_line, shared))
         self.run("cmake --build . --target install %s" % cmake.build_config)
 
     def package(self):
         self.copy("*.h", dst="include",
-                  src="albertosm27/c-blosc/blosc")
+                  src="/home/travis/build/albertosm27/c-blosc/blosc")
         self.copy("*blosc.lib", dst="lib", keep_path=False)
         self.copy("*.dll", dst="bin", keep_path=False)
         self.copy("*.so", dst="lib", keep_path=False)
