@@ -21,32 +21,40 @@ matrix:
    include:
 
       - <<: *linux
-        env: CONAN_GCC_VERSIONS=6.3 CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=1
+        compiler: gcc
+        env: CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=1
 
       - <<: *linux
-        env: CONAN_GCC_VERSIONS=6.3 CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=1
+        compiler: gcc
+        env: CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=1
 
       - <<: *linux
-        env: CONAN_CLANG_VERSIONS=4.0 CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=2
+        compiler: clang
+        env: CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=2
 
       - <<: *linux
-        env: CONAN_CLANG_VERSIONS=4.0 CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=2
+        compiler: clang
+        env: CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=2
 
       - <<: *osx
+        compiler: gcc
         osx_image: xcode8.3
-        env: CONAN_GCC_VERSIONS=6.3 CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=1
+        env: CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=1
 
       - <<: *osx
+        compiler: gcc
         osx_image: xcode8.3
-        env: CONAN_GCC_VERSIONS=6.3 CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=2
+        env: CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=2
 
       - <<: *osx
+        compiler: clang
         osx_image: xcode8.3
-        env: CONAN_APPLE_CLANG_VERSIONS=8.1 CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=1
+        env: CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=1
 
       - <<: *osx
+        compiler: clang
         osx_image: xcode8.3
-        env: CONAN_APPLE_CLANG_VERSIONS=8.1 CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=2
+        env: ONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=2
 
 
 before_install: ./scripts/travis-before-install.sh
