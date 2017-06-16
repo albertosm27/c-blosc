@@ -11,7 +11,6 @@ class CbloscConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     generators = "cmake"
-    exports_sources = "./*"
 
     def source(self):
         # This small hack might be useful to guarantee proper /MT /MD linkage in MSVC
