@@ -25,13 +25,8 @@ before_install: ./scripts/travis-before-install.sh
 #install: sudo apt-get install liblz4-dev libsnappy-dev zlib1g-dev
 
 before_script:
-  - mkdir build
-  - cd build
-  - cmake ..
+
 
 script:
-  - cmake --build . --config Release
-  - ctest
-  - cd ..
   - bash scripts/conan.sh
   
