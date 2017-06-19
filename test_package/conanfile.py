@@ -16,5 +16,4 @@ class CbloscTestConan(ConanFile):
         self.copy("*.dylib*", dst="bin", src="lib")
 
     def test(self):
-        os.chdir("bin")
         self.run("ctest")
