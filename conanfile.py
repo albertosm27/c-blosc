@@ -16,7 +16,7 @@ class CbloscConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
-        self.run('cmake c-blosc-0.2/ -DBUILD_TESTS=OFF %s %s' %
+        self.run('cmake .. -DBUILD_TESTS=OFF %s %s' %
                  (cmake.command_line, shared))
         self.run("cmake --build . --target install %s" % cmake.build_config)
 
