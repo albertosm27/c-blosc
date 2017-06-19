@@ -8,7 +8,7 @@ username = os.getenv("CONAN_USERNAME", "albertosm27")
 
 class CbloscTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    requires = "c-blosc/0.1@%s/%s" % (username, channel)
+    requires = "c-blosc/0.2@%s/%s" % (username, channel)
     generators = "cmake"
 
     def build(self):
