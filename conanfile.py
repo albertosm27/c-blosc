@@ -13,7 +13,7 @@ class CbloscConan(ConanFile):
     default_options = "shared=False"
     generators = "cmake"
 
-     def source(self):
+    def source(self):
         # patch to ensure compatibility
         tools.replace_in_file("c-blosc-0.2/CMakeLists.txt", "PROJECT(blosc)", '''PROJECT(blosc)
             include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
