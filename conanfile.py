@@ -7,7 +7,7 @@ class CbloscConan(ConanFile):
     description = "An extremely fast, multi-threaded, meta-compressor library"
     version = "0.2"
     license = "BSD"
-    url = "https://api.bintray.com/conan/albertosm27/c-blosc-test"
+    url = "https://github.com/albertosm27/c-blosc"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
