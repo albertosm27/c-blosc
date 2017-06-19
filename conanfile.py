@@ -12,14 +12,6 @@ class CbloscConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     generators = "cmake"
-
-    def source(self):
-        # patch to ensure compatibility
-        self.run('pwd')
-        self.run('ls')
-        tools.replace_in_file("CMakeLists.txt", "PROJECT(blosc)", '''PROJECT(blosc)
-            include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-            conan_basic_setup()''')
     
     def build(self):
         cmake = CMake(self)
