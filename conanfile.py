@@ -13,24 +13,17 @@ class CbloscConan(ConanFile):
     default_options = "shared=False"
     generators = "cmake"
 
-    def source(self):
-        # patch to ensure compatibility
-        tools.replace_in_file("/home/travis/build/albertosm27/c-blosc/CMakeLists.txt", "PROJECT(blosc)", '''PROJECT(blosc)
-            include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-            conan_basic_setup()''')
-
     def build(self):
-        cmake = CMake(self)
-        shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
-        self.run('cmake /home/travis/build/albertosm27/c-blosc/ -DBUILD_TESTS=OFF %s %s' %
-                 (cmake.command_line, shared))
-        self.run("cmake --build . --target install %s" % cmake.build_config)
+        shared = {"BUILD_SHARED_LIBS": self.options.shared}
+        cmake = CMake(self.settings)
+        cmake.configure(self, defs=shared)
+        cmake.build(self)
 
     def package(self):
-        self.copy("*.h", dst="include",
-                  src="/home/travis/build/albertosm27/c-blosc/blosc")
-        self.copy("*blosc.lib", dst="lib", keep_path=False)
-        self.copy("*.dll", dst="bin", keep_path=False)
+        self.copy("*.h", dst="include")
+        self.copy("*.lib", dst="lib", src="lib", keep_path=False)
+        self.copy("*.dll", dst="bin", src="bin", keep_path=False)
+        self.copy("*.dylib", dst="bin", src="bin", keep_path=False)
         self.copy("*.so", dst="lib", keep_path=False)
         self.copy("*.a", dst="lib", keep_path=False)
 
