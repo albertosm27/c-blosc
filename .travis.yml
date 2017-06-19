@@ -11,6 +11,7 @@ env:
 linux: &linux
    os: linux
    sudo: required
+   dist: trusty
    language: python
    python: "3.6"
 osx: &osx
