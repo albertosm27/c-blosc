@@ -10,7 +10,7 @@ then
   echo
 else
   #install a newer cmake since at this time Travis only has version 2.8.7
-  sudo add-apt-repository --yes ppa:kubuntu-ppa/backports
+  sudo add-apt-repository --yes ppa:george-edison55/cmake-3.x
   sudo apt-get update -qq
   sudo apt-get install cmake
 fi
