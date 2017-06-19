@@ -13,11 +13,18 @@ class CbloscConan(ConanFile):
     default_options = "shared=False"
     generators = "cmake"
 
+     def source(self):
+        # patch to ensure compatibility
+        tools.replace_in_file("c-blosc-0.2/CMakeLists.txt", "PROJECT(blosc)", '''PROJECT(blosc)
+            include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+            conan_basic_setup()''')
+    
     def build(self):
-        shared = {"BUILD_SHARED_LIBS": self.options.shared}
-        cmake = CMake(self.settings)
-        cmake.configure(self, defs=shared)
-        cmake.build(self)
+        cmake = CMake(self)
+        shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
+        self.run('cmake c-blosc-0.2/ -DBUILD_TESTS=OFF %s %s' %
+                 (cmake.command_line, shared))
+        self.run("cmake --build . --target install %s" % cmake.build_config)
 
     def package(self):
         self.copy("*.h", dst="include")
