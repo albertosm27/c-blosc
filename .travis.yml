@@ -23,39 +23,17 @@ matrix:
 
       - <<: *linux
         compiler: gcc
-        env: CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=1
-
-      - <<: *linux
-        compiler: gcc
-        env: CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=1
 
       - <<: *linux
         compiler: clang
-        env: CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=2
-
-      - <<: *linux
-        compiler: clang
-        env: CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=2
-
-      - <<: *osx
-        compiler: gcc
-        osx_image: xcode8.3
-        env: CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=1
-
-      - <<: *osx
-        compiler: gcc
-        osx_image: xcode8.3
-        env: CONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=2
 
       - <<: *osx
         compiler: clang
         osx_image: xcode8.3
-        env: CONAN_ARCHS=x86 CONAN_CURRENT_PAGE=1
 
       - <<: *osx
         compiler: clang
         osx_image: xcode8.3
-        env: ONAN_ARCHS=x86_64 CONAN_CURRENT_PAGE=2
 
 
 before_install: ./scripts/travis-before-install.sh
