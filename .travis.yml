@@ -1,6 +1,5 @@
 env:
    global:
-     - CONAN_REFERENCE: "c-blosc/0.2"
      - CONAN_USERNAME: "albertosm27"
      - CONAN_CHANNEL: "stable"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/albertosm27/c-blosc-test"
@@ -44,5 +43,16 @@ install:
   - echo ${TRAVIS_BRANCH}
   - echo ${TRAVIS_TAG}
   
-script:  
-#- bash scripts/run.sh
+script:
+  - if [ -z "$TRAVIS_TAG" ]
+  - then
+   - export CONAN_REFERENCE="c-blosc/${TRAVIS_TAG}"
+   - bash scripts/run.sh
+  - else
+   - mkdir build
+   - cd build
+   - cmake ..
+   - cmake --build . --config Release
+   - ctest
+  - fi
+  
