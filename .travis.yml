@@ -19,7 +19,6 @@ osx: &osx
 
 matrix:
    include:
-
       - <<: *linux
         compiler: gcc
 
@@ -46,6 +45,6 @@ install:
 deploy:
   ..
   on:
-    tags
+    tags: true
 after_deploy:
   - bash scripts/run.sh
