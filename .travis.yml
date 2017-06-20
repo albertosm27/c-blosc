@@ -21,13 +21,6 @@ matrix:
       - <<: *linux
         compiler: gcc
 
-      - <<: *linux
-        compiler: clang
-
-      - <<: *osx
-        compiler: gcc
-        osx_image: xcode8.3
-
       - <<: *osx
         compiler: clang
         osx_image: xcode8.3
