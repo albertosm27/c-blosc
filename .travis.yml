@@ -40,19 +40,8 @@ before_install: ./scripts/travis-before-install.sh
 
 install:
   - bash scripts/install.sh
-  - echo ${TRAVIS_BRANCH}
-  - echo ${TRAVIS_TAG}
   
 script:
-  - if [ -z "$TRAVIS_TAG" ]
-  - then
-   - export CONAN_REFERENCE="c-blosc/${TRAVIS_TAG}"
    - bash scripts/run.sh
-  - else
-   - mkdir build
-   - cd build
-   - cmake ..
-   - cmake --build . --config Release
-   - ctest
-  - fi
+
   
