@@ -41,7 +41,7 @@ before_install: ./scripts/travis-before-install.sh
 
 install:
   - bash scripts/install.sh
-  - echo ${TRAVIS_TAG:-0.0.0-dev}+${TRAVIS_BUILD_NUMBER}.${TRAVIS_COMMIT:0:7}
+  - echo ${TRAVIS_BRANCH}
 
 deploy:
   on:
