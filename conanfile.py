@@ -5,7 +5,7 @@ import os
 class CbloscConan(ConanFile):
     name = "c-blosc"
     description = "An extremely fast, multi-threaded, meta-compressor library"
-    version = "0.2"
+    version = os.environ['CONAN_REFERENCE'].split('/')[1]
     license = "BSD"
     url = "https://github.com/albertosm27/c-blosc"
     settings = "os", "compiler", "build_type", "arch"
@@ -26,7 +26,7 @@ class CbloscConan(ConanFile):
         shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
         self.run('cmake c-blosc -DBUILD_TESTS=OFF %s %s' %
                  (cmake.command_line, shared))
-        self.run("cmake --build . %s" % cmake.build_config)
+        self.run("cmake --build . --config Release %s" % cmake.build_config)
 
     def package(self):
         self.copy("blosc.h", dst="include", src="c-blosc/blosc")
