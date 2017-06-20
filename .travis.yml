@@ -5,8 +5,7 @@ env:
      - CONAN_CHANNEL: "stable"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/albertosm27/c-blosc-test"
      - CONAN_REMOTES: "https://api.bintray.com/conan/albertosm27/c-blosc-test"
-     - CONAN_ARCHS: "x86, x86_64"
-     - CONAN_TOTAL_PAGES: 2
+     - CONAN_ARCHS: "x86,x86_64"
      
 linux: &linux
    os: linux
@@ -28,7 +27,7 @@ matrix:
         compiler: clang
 
       - <<: *osx
-        compiler: clang
+        compiler: gcc
         osx_image: xcode8.3
 
       - <<: *osx
