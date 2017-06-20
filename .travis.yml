@@ -42,9 +42,10 @@ before_install: ./scripts/travis-before-install.sh
 install:
   - bash scripts/install.sh
   
+script:
+  - bash scripts/run.sh
+
 deploy:
-  ..
   on:
     tags: true
-after_deploy:
-  - bash scripts/run.sh
+
