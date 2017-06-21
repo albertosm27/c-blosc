@@ -38,7 +38,9 @@ build_script:
       If($APPVEYOR_REPO_TAG_NAME) {            
         $env:CONAN_REFERENCE="c-blosc/$APPVEYOR_REPO_TAG_NAME"
         python build.py
-      } Else {            
+      } Else {
+        rmdir /q /s _builds
+        mkdir _builds
         cmake "-G%GENERATOR%" -H. -B_builds
         cmake --build _builds --config "%CONFIG%"
         cd _builds
