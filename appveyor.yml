@@ -4,9 +4,7 @@
 init:
   - git config --global core.autocrlf input
 
-# This is the build version displayed on AppVeyor's UI.
-# It's incrementally automatically like travis-ci but allows custom formatting.
-version: '{build}'
+build: false
 
 environment:
     PYTHON: "C:\\Python27"
