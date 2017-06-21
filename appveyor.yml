@@ -34,4 +34,4 @@ install:
   - conan user # It creates the conan data directory
 
 build_script:
-  - scripts/winrun.cmd
+  - scripts\\winrun.cmd
