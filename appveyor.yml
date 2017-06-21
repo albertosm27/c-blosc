@@ -42,6 +42,6 @@ build_script:
     - mkdir _builds
     - cmake "-G%GENERATOR%" -B_builds
     - cmake --build _builds --config "%CONFIG%"
-    - ps: cd _builds
+    - cd _builds
     - ctest -VV -C "%CONFIG%"
   - )
