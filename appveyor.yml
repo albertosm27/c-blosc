@@ -4,7 +4,7 @@
 init:
   - git config --global core.autocrlf input
 
-version: '{build}'
+build: false
 
 environment:
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\appveyor\\run_with_env.cmd"
