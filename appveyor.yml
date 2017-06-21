@@ -4,7 +4,9 @@
 init:
   - git config --global core.autocrlf input
 
-build: false
+# This is the build version displayed on AppVeyor's UI.
+# It's incrementally automatically like travis-ci but allows custom formatting.
+version: '{build}'
 
 environment:
     PYTHON: "C:\\Python27"
@@ -23,7 +25,8 @@ environment:
     matrix:
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
           CONAN_VISUAL_VERSIONS: 14
-
+          GENERATOR: "Visual Studio 14 2015"
+          CONFIG: Release
 
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
