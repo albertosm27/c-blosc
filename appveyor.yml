@@ -34,11 +34,11 @@ install:
   - conan user # It creates the conan data directory
 
 build_script:
-  - IF "%APPVEYOR_REPO_TAG_NAME%"=="" (          
+  - cmd: IF "%APPVEYOR_REPO_TAG_NAME%"=="" (          
     SET CONAN_REFERENCE="c-blosc/%APPVEYOR_REPO_TAG_NAME%"
     python build.py
   )
-  - ELSE (
+  ELSE (
     rmdir /q /s _builds
     mkdir _builds
     cmake "-G%GENERATOR%" -B_builds
