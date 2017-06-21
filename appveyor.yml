@@ -11,7 +11,6 @@ environment:
     PYTHON_VERSION: "2.7.8"
     PYTHON_ARCH: "32"
 
-    CONAN_REFERENCE: "c-blosc/0.2"
     CONAN_USERNAME: "albertosm27"
     CONAN_LOGIN_USERNAME: "albertosm27"
     CONAN_CHANNEL: "stable"
@@ -33,4 +32,13 @@ install:
   - conan user # It creates the conan data directory
 
 test_script:
-  - python build.py
+  - ps: >-
+      If($APPVEYOR_REPO_TAG_NAME) {            
+        $env:CONAN_REFERENCE="c-blosc/$APPVEYOR_REPO_TAG_NAME"
+        python build.py
+      } Else {            
+        cmake "-G%GENERATOR%" -H. -B_builds
+        cmake --build _builds --config "%CONFIG%"
+        cd _builds
+        ctest -VV -C "%CONFIG%"
+      }
