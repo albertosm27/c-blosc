@@ -11,6 +11,6 @@ def system(command):
 
 
 if __name__ == "__main__":
-    builder = ConanMultiPackager(curpage=1, total_pages=2)
+    builder = ConanMultiPackager()
     builder.add_common_builds(pure_c=True)
     builder.run()
