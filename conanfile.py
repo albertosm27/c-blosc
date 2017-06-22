@@ -5,7 +5,7 @@ import os
 class CbloscConan(ConanFile):
     name = "c-blosc"
     description = "An extremely fast, multi-threaded, meta-compressor library"
-    version = CHANGE
+    version = 'CHANGE'
     license = "BSD"
     url = "https://github.com/albertosm27/c-blosc"
     settings = "os", "compiler", "build_type", "arch"
