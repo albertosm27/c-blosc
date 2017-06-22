@@ -37,8 +37,8 @@ class CbloscConan(ConanFile):
     def package(self):
         self.copy("blosc.h", dst="include", src="c-blosc/blosc")
         self.copy("blosc-export.h", dst="include", src="c-blosc/blosc")
-        self.copy("*.lib", dst="lib", src="lib", keep_path=False)
-        self.copy("*.dll", dst="bin", src="bin", keep_path=False)
+        self.copy("*.lib", dst="lib", src="Release", keep_path=False)
+        self.copy("*.dll", dst="bin", src="Release", keep_path=False)
         self.copy("*.dylib", dst="bin", src="bin", keep_path=False)
         self.copy("*.so", dst="lib", keep_path=False)
         self.copy("*.a", dst="lib", keep_path=False)
