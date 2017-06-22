@@ -32,7 +32,6 @@ before_install: ./scripts/travis-before-install.sh
 #install: sudo apt-get install liblz4-dev libsnappy-dev zlib1g-dev
 
 install:
-  - sed "s/\x27CHANGE\x27/\x27$TRAVIS_TAG\x27/g" conanfile.py
   - bash scripts/install.sh
   
 script:
