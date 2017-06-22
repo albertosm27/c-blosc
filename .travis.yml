@@ -35,7 +35,7 @@ install:
   - bash scripts/install.sh
   
 script:
-   - sed "s/CHANGE/$TRAVIS_TAG/g" conanfile.py
+   - sed "s/CHANGE/\x27$TRAVIS_TAG\x27/g" conanfile.py
    - bash scripts/run.sh
 
   
