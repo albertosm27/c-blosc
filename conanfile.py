@@ -17,7 +17,7 @@ class CbloscConan(ConanFile):
         self.run("git clone https://github.com/albertosm27/c-blosc.git")
         #self.run("cd hello && git checkout static_shared")
         # patch to ensure compatibility
-        self.run('sed \"s/\x27CHANGE\x27/\x27$TRAVIS_TAG\x27/g\" conanfile.py')
+        self.run('sed \"s/\x27CHANGE\x27/\x27$TRAVIS_TAG\x27/g\" c-blosc/conanfile.py')
         tools.replace_in_file("c-blosc/CMakeLists.txt", "PROJECT(blosc)", '''PROJECT(blosc)
             include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
             conan_basic_setup()''')
