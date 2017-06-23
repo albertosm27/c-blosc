@@ -38,4 +38,3 @@ install:
 
 test_script:
   - scripts\\winrun.cmd
-  - dir /s "C:\Users\appveyor\.conan\data"
