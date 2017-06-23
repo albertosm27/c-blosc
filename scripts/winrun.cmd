@@ -11,7 +11,7 @@ goto commonexit
 
 :Conan
 SET CONAN_REFERENCE=c-blosc/%APPVEYOR_REPO_TAG_NAME%
-python "conan\\build.py"
+python "conanbuild.py"
 goto commonexit
 
 :commonexit
