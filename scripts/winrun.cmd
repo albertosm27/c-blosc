@@ -15,4 +15,4 @@ python build.py
 goto commonexit
 
 :commonexit
-pause
+exit
