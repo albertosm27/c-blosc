@@ -11,7 +11,7 @@ if [[ ! -z $TRAVIS_TAG ]]; then
         fi
         pyenv activate conan
     fi
-    python build.py
+    python conan/build.py
 else
     mkdir build
     cd build
