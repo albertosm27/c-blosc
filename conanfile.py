@@ -28,11 +28,12 @@ class CbloscConan(ConanFile):
             conan_basic_setup()''')
     
     def build(self):
-        cmake = CMake(self)
-        shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
-        self.run('cmake c-blosc -DBUILD_TESTS=OFF %s %s' %
-                 (cmake.command_line, shared))
-        self.run("cmake --build . --config Release %s" % cmake.build_config)
+        if self.settings.build_type == "Release":
+            cmake = CMake(self)
+            shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
+            self.run('cmake c-blosc -DBUILD_TESTS=OFF %s %s' %
+                     (cmake.command_line, shared))
+            self.run("cmake --build . --config Release %s" % cmake.build_config)
 
     def package(self):
         self.copy("blosc.h", dst="include", src="c-blosc/blosc")
