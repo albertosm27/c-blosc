@@ -36,13 +36,14 @@ class CbloscConan(ConanFile):
             self.run("cmake --build . --config Release %s" % cmake.build_config)
 
     def package(self):
-        self.copy("blosc.h", dst="include", src="c-blosc/blosc")
-        self.copy("blosc-export.h", dst="include", src="c-blosc/blosc")
-        self.copy("*.lib", dst="lib", src="blosc/Release", keep_path=False)
-        self.copy("*.dll", dst="bin", src="blosc/Release", keep_path=False)
-        self.copy("*.dylib", dst="bin", src="bin", keep_path=False)
-        self.copy("*.so", dst="lib", keep_path=False)
-        self.copy("*.a", dst="lib", keep_path=False)
+        if self.settings.build_type == "Release":
+            self.copy("blosc.h", dst="include", src="c-blosc/blosc")
+            self.copy("blosc-export.h", dst="include", src="c-blosc/blosc")
+            self.copy("*.lib", dst="lib", src="blosc/Release", keep_path=False)
+            self.copy("*.dll", dst="bin", src="blosc/Release", keep_path=False)
+            self.copy("*.dylib", dst="bin", src="bin", keep_path=False)
+            self.copy("*.so", dst="lib", keep_path=False)
+            self.copy("*.a", dst="lib", keep_path=False)
 
     def package_info(self):
         self.cpp_info.libs = ["blosc"]
